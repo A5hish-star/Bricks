@@ -1,0 +1,21 @@
+@model Bricks.Models.Product
+<div class="col-xl-4 col-lg-4 container border">
+    <h2>Product</h2>
+    <form method="post" asp-action="Product" asp-controller="Production" class="pt-4">
+        <div>
+            <label asp-for="ProductName"></label>
+            <input asp-for="ProductName" class="form-control">
+        </div>
+        <div>
+            <label asp-for="Price"></label>
+            <input asp-for="Price" class="form-control">
+        </div>
+        <div>
+            <label asp-for="Description"></label>
+            <textarea asp-for="Description" class="form-control"></textarea>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary mt-2 mb-2">Submit</button>
+        </div>
+    </form>
+</div>

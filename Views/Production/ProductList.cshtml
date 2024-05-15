@@ -1,0 +1,27 @@
+@model IEnumerable<Bricks.Models.Production>
+<h1>Production Table</h1>
+<table class="table border m-2 col-xl-8 col-lg-7">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>ProductName</th>
+            <th>Catagory</th>
+            <th>Quantity</th>
+            <th>Unit</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var items in Model)
+        {
+            <tr>
+                <td>@items.Date</td>
+                <td>@items.ProductName</td>
+                <td>@items.Catagory</td>
+                <td>@items.Quantity</td>
+                <td>@items.Unit</td>
+                <td><a asp-action="DeleteProduction" asp-controller="Production" asp-route-id="@items.Id" class="btn btn-danger">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

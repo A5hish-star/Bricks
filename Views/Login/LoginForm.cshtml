@@ -1,0 +1,37 @@
+@model Bricks.Models.Login;
+@{
+    ViewData["Title"] = "Login Page";
+    Layout="_Login";
+}
+<section class=" vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class=" col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white col-10" style="border-radius: 1rem;">
+          <div class="card-body  col-12">
+
+            <div class="col-8 container">
+              <form asp-action="LoginForm" asp-controller="Login" method="post" class="pt-4">
+              <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+              <div>
+                <label asp-for="Name" >Username:</label>
+                <input asp-for="Name" type="text" class="form-control " autocomplete="off" />
+                <span asp-validation-for="Name"></span>
+              </div>
+              <div>
+                <label asp-for="Password">Password :</label>
+                <input asp-for="Password" id="Password" type="password" class="form-control"/>
+                <span asp-validation-for="Password"></span>
+                @* <i class="fa-regular fa-eye" id="img"></i> *@
+              </div>
+              <button class="mt-2 btn btn-outline-light" type="submit">Login</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+

@@ -1,0 +1,28 @@
+@model IEnumerable<Bricks.Models.Customer>
+<h1>Customer Table</h1>
+<table class="table border m-2 col-xl-8 col-lg-7">
+    <thead>
+        <tr>
+            <th>Customer Name</th>
+            <th>Mobile Number</th>
+            <th>Email</th>
+            <th>ShippingAddress</th>
+            <th>PAN</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var items in Model)
+        {
+            <tr>
+                <td>@items.CustomerName</td>
+                <td>@items.MobileNo</td>
+                <td>@items.Email</td>
+                <td>@items.ShippingAddress</td>
+                <td>@items.PAN</td>
+                <td style="display: flex;"><a asp-action="Edit" asp-controller="Customer" asp-route-id="@items.Id" class="btn btn-warning">Edit</a>
+                <a asp-action="Delete" asp-controller="Customer" asp-route-id="@items.Id" class="btn btn-danger">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

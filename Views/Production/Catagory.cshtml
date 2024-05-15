@@ -1,0 +1,13 @@
+@model Bricks.Models.Catagory
+<div class="col-xl-4 col-lg-4 container border">
+    <h2>Catagory</h2>
+    <form method="post" asp-action="Catagory" asp-controller="Production" class="pt-4">
+        <div>
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control">
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary mt-2 mb-2">Submit</button>
+        </div>
+    </form>
+</div>

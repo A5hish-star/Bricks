@@ -1,0 +1,104 @@
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+    </div>
+    <div class="row">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" id="totalProduction">
+                                Total Production Last Seven Day (@ViewData["Date"])</div>
+                            <div id="total" class="h5 mb-0 font-weight-bold text-gray-800">@ViewData["total"]</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                            Remaining Stocks</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewData["totalstocks"]</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1" id="totalSales">
+                            Total Product Sold Last Seven Day (@ViewData["Date"])</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewData["totalsales"]</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="row">
+        <div class="col-xl-8 col-lg-7">
+            <div class="card shadow mb-4">
+                <div
+                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Total Products Remain</h6>
+                </div>
+                <div class="card-body">
+                    @* <table class="table table-border">
+                        <thead>
+                            <tr>
+                                <th>Catagory</th>
+                                <th>Remaining</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(var items in Model)
+                            {
+                                <tr>
+                                    <td>@items.Catagory</td>
+                                    <td>@items.RemainingQuantity</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table> *@
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-4 ">
+            <div>
+                <h6 class="font-weight-bold text-primary border">Chart Display</h6>
+            </div>
+                <canvas id="myChart" class="align-items-center" style="width: 500px; height: 500px;"></canvas>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript-->
+    <script src="~/Theme/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js" integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="~/Theme/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="~/Theme/js/sb-admin-2.min.js"></script>
+    <script>
+  const ctx = document.getElementById('myChart');
+  new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Total Production', 'Total Stocks Remain', 'Total Sales'],
+      datasets: [{
+        label: '',
+        data: [@ViewData["total"],@ViewData["totalstocks"],@ViewData["totalsales"]],
+        hoverOffset: 4
+      }]
+    },
+  });
+</script>

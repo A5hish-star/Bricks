@@ -1,0 +1,13 @@
+@model Bricks.Models.Unit
+<div class="col-xl-4 col-lg-4 container border">
+    <h2>Unit</h2>
+    <form method="post" asp-action="Unit" asp-controller="Production" class="pt-4">
+        <div>
+            <label asp-for="UnitName">Unit</label>
+            <input asp-for="UnitName" class="form-control">
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary mt-2 mb-2">Submit</button>
+        </div>
+    </form>
+</div>

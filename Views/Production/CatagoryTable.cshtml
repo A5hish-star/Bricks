@@ -1,0 +1,18 @@
+@model IEnumerable<Bricks.Models.Catagory>
+<h1>Catagory Table</h1>
+<table class="table border m-2 col-xl-8 col-lg-7">
+    <thead>
+        <tr>
+            <th>Name</th>
+    </thead>
+    <tbody>
+        @foreach (var items in Model)
+        {
+            <tr>
+                <td>@items.Name</td>
+                <td><a asp-action="EditCatagory" asp-controller="Production" asp-route-id="@items.Id" class="btn btn-warning">Edit</a>
+                <a asp-action="DeleteCatagory" asp-controller="Production" asp-route-id="@items.Id" class="btn btn-danger">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

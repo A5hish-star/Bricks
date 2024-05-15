@@ -1,0 +1,40 @@
+@model Bricks.Models.Production
+<div class="col-xl-4 col-lg-4 container border">
+    <h2>Production</h2>
+<form method="post" asp-action="ProductDetails" asp-controller="Production" class="pt-4">
+    <a asp-action="ProductList" asp-controller="Production" class="justify-content-end">History</a>
+    <div>
+        <label asp-for="Date" ></label>
+        <input asp-for="Date" type="date" class="form-control"/>
+    </div>
+    <div>
+    <label asp-for="ProductName"></label>
+        <div>
+            @* <input asp-for="ProductName" class="form-control"> *@
+            <select class="form-control" asp-for="ProductName" asp-items="@ViewBag.Product">
+                <option disabled selected ="Id">--Select Product--</option>
+            </select>
+        </div>
+    </div>
+    <div>
+        <label asp-for="Catagory"></label>
+        <div>
+            <select class="form-control" asp-for="Catagory" asp-items="@ViewBag.Catagory">
+                <option disabled selected ="Id">--Select Catagory--</option>
+            </select>
+        </div>
+    </div>
+    <div>
+        <label asp-for="Quantity"></label>
+        <div style="display: flex;">
+            <input asp-for="Quantity" class="form-control"/>
+            <select asp-for="Unit" asp-items="@ViewBag.Unit">
+                <option disabled selected ="Id">--Unit--</option>
+            </select>
+        </div>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary mt-2 mb-2">Submit</button>
+    </div>
+</form>
+</div>

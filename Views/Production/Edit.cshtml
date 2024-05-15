@@ -1,0 +1,52 @@
+@model Bricks.Models.Sales
+
+<div class="col-xl-4 col-lg-4 container border">
+
+<form method="post" asp-action="Edit" asp-controller="Production" class="pt-4">
+    <div>
+        <label asp-for="BuyerName" ></label>
+        <input asp-for="BuyerName" class="form-control" readonly/>
+    </div>
+    <div>
+        <label asp-for="Catagory"></label>
+        <input asp-for="Catagory" class="form-control" readonly/>
+    </div>
+    <div>
+        <label asp-for="Price"></label>
+        <input asp-for="Price" id="Price" class="form-control" readonly/>
+    </div>
+    <div>
+        <label asp-for="AmountPaid"></label>
+        <input asp-for="AmountPaid" id="AmountPaid" class="form-control"/>
+    </div>
+    <div>
+        <label asp-for="AmountRemaining"></label>
+        <input asp-for="AmountRemaining" id="AmountRemaining" class="form-control" readonly>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary mt-2 d-flex justify-content-end">Submit</button>
+    </div>
+</form>
+</div>
+
+@section scripts{
+    <script src="/home/ashish/Bricks/wwwroot/lib/jquery/dist/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#AmountOfBricks,#PriceperBrick").on("input",function(){
+                var amountOfBricks = parseInt($("#AmountOfBricks").val()) || 0;
+                var pricePerBrick = parseInt($("#PriceperBrick").val()) || 0;
+                var price = amountOfBricks * pricePerBrick;
+                $("#Price").val(price);
+            });
+        });
+        $(document).ready(function(){
+            $("#Price,#AmountPaid").on("input",function(){
+                var price = parseInt($("#Price").val()) || 0;
+                var amountpaid = parseInt($("#AmountPaid").val()) || 0;
+                var amountremaining = price - amountpaid;
+                $("#AmountRemaining").val(amountremaining);
+            });
+        });
+    </script>
+}

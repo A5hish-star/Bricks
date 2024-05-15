@@ -1,0 +1,29 @@
+@model Bricks.Models.Customer
+<div class="col-xl-4 col-lg-4 container border">
+  <form asp-action="Edit" asp-controller="Customer" method="post" class="pt-4">
+  <h1>Customer Details Edit</h1>
+  <div>
+        <label asp-for="CustomerName" ></label>
+        <input asp-for="CustomerName" class="form-control"/>
+    </div>
+    <div>
+        <label asp-for="MobileNo" ></label>
+        <input asp-for="MobileNo" class="form-control"/>
+    </div>
+    <div>
+        <label asp-for="Email" ></label>
+        <input asp-for="Email" class="form-control"/>
+    </div>
+    <div>
+        <label asp-for="ShippingAddress" ></label>
+        <input asp-for="ShippingAddress" class="form-control"/>
+    </div>
+    <div>
+        <label asp-for="PAN" ></label>
+        <input asp-for="PAN" class="form-control"/>
+    </div>
+  <div>
+        <button type="submit" class="btn btn-primary mt-2 mb-2">Submit</button>
+    </div>
+  </form>
+</div>

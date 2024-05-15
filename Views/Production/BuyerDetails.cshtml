@@ -1,0 +1,83 @@
+@model Bricks.Helper.PaginatedList<Bricks.Models.Sales>
+<h1>Sales table</h1>
+<form asp-controller="Production" asp-action="BuyerDetails" method="get">
+    <p>
+        <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" />
+        <input type="submit" value="Search" />
+    </p>
+</form>
+@if(Model !=null)
+{<table class="table border m-2 col-xl-8 col-lg-7">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Buyer Name</th>
+            <th>Product</th>
+            <th>Catagory</th>
+            <th>Quantity</th>
+            <th>Unit</th>
+            <th>Price per Brick</th>
+            <th>Price</th>
+            <th>Amount Paid</th>
+            <th>amount Remaining</th>
+            <th>Mode of Payment</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var items in Model)
+        {
+            <tr>
+                <td>@items.Date</td>
+                <td>@items.BuyerName</td>
+                <td>@items.ProductName</td>
+                <td>@items.Catagory</td>
+                <td>@items.AmountOfBricks</td>
+                <td>@items.Unit</td>
+                <td>&#8377; @items.PriceperBrick</td>
+                <td>&#8377; @items.Price</td>
+                <td>&#8377; @items.AmountPaid</td>
+                <td>&#8377; @items.AmountRemaining</td>
+                <td>@items.ModeOfPayment</td>
+                @if(@items.Status == "Paid")
+                {
+                    <td class="text-success">@items.Status</td>
+                }
+                else
+                {
+                    <td class="text-danger">@items.Status</td>
+                }
+                @if(@items.Status == "Paid")
+                {
+                    <td><a asp-action="Delete" asp-controller="Production" asp-route-id="@items.Id" class="btn btn-danger" >Delete</a></td>
+                }
+                else
+                {
+                    <td><a asp-action="Edit" asp-controller="Production" asp-route-id="@items.Id" class="btn btn-warning">Edit</a></td>
+                }
+
+            </tr>
+        }
+    </tbody>
+</table>
+}
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<div class="float-right col-xl-8 col-lg-7">
+    <a asp-action="BuyerDetails"
+   asp-route-pageNumber="@(Model.PageIndex - 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-primary @prevDisabled">
+    Previous
+</a>
+<a asp-action="BuyerDetails"
+   asp-route-pageNumber="@(Model.PageIndex + 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-primary @nextDisabled">
+    Next
+</a>
+</div>

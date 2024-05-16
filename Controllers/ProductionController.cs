@@ -31,8 +31,8 @@ namespace Bricks.Controllers
         public IActionResult ProductList()
         {
             var data = _context.production.ToList();
-            int TotalQuantity = data.Sum(x => x.Quantity);
-            ViewData["TotalQuantity"] = TotalQuantity;
+            // int TotalQuantity = data.Sum(x => x.Quantity);
+            // ViewData["TotalQuantity"] = TotalQuantity;
             return View(data);
         }
 
@@ -72,6 +72,35 @@ namespace Bricks.Controllers
                     };
                     _context.production.Add(newProduct);
                 } 
+                _context.SaveChanges();
+                return RedirectToAction("ProductList","Production");
+            }
+            return View();
+        }
+        public IActionResult EditProduction(int id)
+        {
+            var model = _context.Catagory.Select(item => item.Name).Distinct().ToList();
+            @ViewBag.Catagory = new SelectList(model);
+            var unit = _context.Unit.Select(x => x.UnitName).Distinct().ToList();
+            @ViewBag.Unit = new SelectList(unit);
+            var product = _context.product.Select(x =>x.ProductName).Distinct().ToList();
+            @ViewBag.Product = new SelectList(product);
+            var data = _context.production.Where(x => x.Id == id).FirstOrDefault();
+            return View(data);
+        }
+
+        [HttpPost]
+        public IActionResult EditProduction(Production model)
+        {
+            var data = _context.production.Where(x => x.Id == model.Id).FirstOrDefault();
+            if(data != null)
+            {
+                data.Date = model.Date;
+                data.ProductName = model.ProductName;
+                data.Catagory = model.Catagory;
+                data.Quantity = model.Quantity;
+                data.Unit = model.Unit;
+
                 _context.SaveChanges();
                 return RedirectToAction("ProductList","Production");
             }
@@ -239,6 +268,16 @@ namespace Bricks.Controllers
         [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
         public IActionResult Edit (int id)
         {
+            var model = _context.Catagory.Select(item => item.Name).Distinct().ToList();
+            @ViewBag.SelectList = new SelectList(model);
+            var product = _context.product.Select(x => x.ProductName).Distinct().ToList();
+            @ViewBag.Product = new SelectList(product);
+            var catagory = _context.Catagory.Select(x => x.Name).Distinct().ToList();
+            @ViewBag.Catagory = new SelectList(catagory);
+            var customer = _context.Customer.Select(x => x.CustomerName).Distinct().ToList();
+            @ViewBag.Customer = new SelectList(customer);
+            var unit = _context.Unit.Select(x => x.UnitName).Distinct().ToList();
+            @ViewBag.Unit = new SelectList(unit);
             var data = _context.buyers.Where(x =>x.Id == id).FirstOrDefault();
             return View(data);
         }
@@ -248,8 +287,17 @@ namespace Bricks.Controllers
             var data = _context.buyers.Where(x => x.Id == model.Id).SingleOrDefault();
             if(data != null)
             {
+                data.Date = model.Date;
+                data.BuyerName = model.BuyerName;
+                data.ProductName = model.ProductName;
+                data.Catagory = model.Catagory;
+                data.AmountOfBricks = model.AmountOfBricks;
+                data.Unit = model.Unit;
+                data.PriceperBrick = model.PriceperBrick;
+                data.Price = model.Price;
                 data.AmountPaid = model.AmountPaid;
                 data.AmountRemaining = model.AmountRemaining;
+                data.ModeOfPayment = model.ModeOfPayment;
                 bool Paid = model.Price == model.AmountPaid;
                 if(Paid)
                 {

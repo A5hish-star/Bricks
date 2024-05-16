@@ -20,7 +20,7 @@
                 <td>@items.Catagory</td>
                 <td>@items.Quantity</td>
                 <td>@items.Unit</td>
-                <td style="display: flex;"><a asp-action="EditProduction" asp-controller="Production" asp-route-id="@items.Id" class="btn btn-warning" >Edit</a>
+                <td><a asp-action="EditProduction" asp-controller="Production" asp-route-id="@items.Id" class="btn btn-warning" >Edit</a>
                     <a asp-action="DeleteProduction" asp-controller="Production" asp-route-id="@items.Id" class="btn btn-danger">Delete</a></td>
             </tr>
         }

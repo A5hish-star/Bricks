@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Bricks")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ca5dfe3d02074fd3abd2ac7a485bf4b3247e4f4f")]
 [assembly: System.Reflection.AssemblyProductAttribute("Bricks")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Bricks")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

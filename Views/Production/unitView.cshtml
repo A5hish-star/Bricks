@@ -11,7 +11,7 @@
         {
             <tr>
                 <td>@items.UnitName</td>
-                <td style="display: flex;"><a asp-action="EditUnit" asp-controller="Production" asp-route-id="@items.Id" class="btn btn-warning">Edit</a>
+                <td><a asp-action="EditUnit" asp-controller="Production" asp-route-id="@items.Id" class="btn btn-warning">Edit</a>
                 <a asp-action="DeleteUnit" asp-controller="Production" asp-route-id="@items.Id" class="btn btn-danger">Delete</a></td>
             </tr>
         }

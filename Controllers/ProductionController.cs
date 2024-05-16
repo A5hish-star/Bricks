@@ -77,6 +77,8 @@ namespace Bricks.Controllers
             }
             return View();
         }
+        [HttpGet]
+        [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
         public IActionResult EditProduction(int id)
         {
             var model = _context.Catagory.Select(item => item.Name).Distinct().ToList();
@@ -117,6 +119,8 @@ namespace Bricks.Controllers
             _context.SaveChanges();
             return RedirectToAction("ProductList","Production");
         }
+        [HttpGet]
+        [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
         public IActionResult Sales()
         {
             var model = _context.Catagory.Select(item => item.Name).Distinct().ToList();
@@ -178,6 +182,7 @@ namespace Bricks.Controllers
         }
 
         [HttpGet]
+        [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
         public async Task<IActionResult> BuyerDetails (string searchString,string currentFilter,int pageNumber)
         {
             if (searchString != null)
@@ -413,6 +418,8 @@ namespace Bricks.Controllers
             }
             return View();
         }
+        [HttpGet]
+        [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
         public IActionResult Producttable()
         {
             var data = _context.product.ToList();
@@ -461,6 +468,7 @@ namespace Bricks.Controllers
             return Json(price?.Price?? 0);
         }
         [HttpGet]
+        [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
         public IActionResult EditCatagory(int id)
         {
             var data = _context.Catagory.Where(x => x.Id == id).FirstOrDefault();
@@ -491,6 +499,7 @@ namespace Bricks.Controllers
         }
 
         [HttpGet]
+        [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
         public IActionResult EditUnit(int id)
         {
             var data = _context.Unit.Where(x => x.Id == id).FirstOrDefault();

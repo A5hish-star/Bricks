@@ -16,7 +16,7 @@
                 <td>@items.ProductName</td>
                 <td>&#8377; @items.Price</td>
                 <td>@items.Description</td>
-                <td style="display: flex;"><a asp-action="EditProduct" asp-controller="Production" asp-route-id="@items.Id" class="btn btn-warning">Edit</a>
+                <td><a asp-action="EditProduct" asp-controller="Production" asp-route-id="@items.Id" class="btn btn-warning">Edit</a>
                 <a asp-action="DeleteProduct" asp-controller="Production" asp-route-id="@items.Id" class="btn btn-danger">Delete</a></td>
             </tr>
         }
